@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Update Task | Django
+{% endblock title %}
+
+{% block content %}
+<div class="container">
+    <form action="" method="POST">
+        {% csrf_token %}
+    
+        {{form}}
+    
+        <button type="submit" class="btn btn-warning">Submit</button>
+    </form>
+</div>
+
+{% endblock content %}

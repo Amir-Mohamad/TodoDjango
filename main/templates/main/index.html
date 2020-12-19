@@ -1,0 +1,70 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Todo | Django
+{% endblock title %}
+
+{% block content %}
+    <!-- <form action="/" method="POST">
+        {% csrf_token %}
+
+        {{form.task}}
+
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form> -->
+
+    <!-- <div>
+        {% for task in tasks %}
+        <a href="{% url 'main:update_task' task.id %}">Edit</a>
+        <a href="{% url 'main:delete_task' task.id %}">Delete</a>
+
+            {% if task.complete_task == True %}
+            <strike>{{task}}</strike> <br> 
+            {% else %}
+            <span>{{task}}</span> <br>
+            {% endif %}
+        {% endfor %}
+    </div> -->
+    
+    <div class="page-content page-container" style="text-align: center !important;" id="page-content">
+        <div class="padding">
+
+            <div class="row container d-flex justify-content-center">
+                <div class="col-md-12">
+                    <div class="card px-3">
+                        <div class="card-body">
+                            <!-- card title -->
+                            <h3 class="">TodoApp | Django</h3>
+                            <div class="add-items d-flex">
+                                <!-- form -->
+                                <form action="/" method="POST">
+                                    {% csrf_token %}
+                                    {{form.task}}
+                                </form>
+                                <button class="add btn btn-primary font-weight-bold todo-list-add-btn">Add</button> </div>
+                            <div class="list-wrapper">
+                                <ul class="d-flex flex-column-reverse todo-list">
+                                    <!-- showing tasks -->
+                                {% for task in tasks %}
+                                    <li>
+                                        <a class="btn btn-warning" href="{% url 'main:update_task' task.id %}">Edit</a>
+                                        <a class="btn btn-danger" href="{% url 'main:delete_task' task.id %}">Delete</a>
+                                        <div class="form-check-label" style="margin-left: 50px !important;">
+                                            {% if task.complete_task == True %}
+
+                                            <strike class="h5">{{task}}</strike> 
+                                             {% else %}
+                                            <p class="h5"> {{task}} </p>
+                                            {% endif %}
+                                        </div>
+                                    </li>
+                                {% endfor %}
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock content %}
